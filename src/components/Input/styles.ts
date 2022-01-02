@@ -65,7 +65,7 @@ export const Title = styled(Text).attrs(({ theme }) => ({
   fontSize: 16,
 }))`
   padding-top: 10px;
-  color: ${({ theme }) => theme.Colors.WHITE};
+  color: ${({ theme }) => theme.Colors.SECONDARY_LIGHT_GRAY};
 `;
 
 export const ContainerInput = styled.View<ContainerInputProps & ContainerProps>`
@@ -95,7 +95,7 @@ export const Input = styled.TextInput.attrs<TextInputProps>(
 )<TextInputProps>`
   width: ${({ iconRight }) => (iconRight ? 90 : 100)}%;
   /* font-size: 12px; */
-  color: ${({ theme }) => theme.Colors.WHITE};
+  color: ${({ theme }) => theme.Colors.SECONDARY_LIGHT_GRAY};
   margin-bottom: ${vs(10)}px;
   margin-left: 10px;
 `;

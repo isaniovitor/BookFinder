@@ -1,21 +1,25 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { useCallback, useContext, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
 import { SvgXml } from 'react-native-svg';
-import { ThemeContext } from 'styled-components';
+import { useDispatch } from 'react-redux';
 
-import Book from '~/components/Book';
-import Button from '~/components/Button';
 import Input from '~/components/Input';
 
 import { xml } from '~/assets/index';
 import { HOME_SCREEN } from '~/constants/routes';
+import { getBooksAction } from '~/store/ducks/books/actions';
 
 import * as S from './styles';
 
 const Home: React.FC = () => {
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
-  const { Colors } = useContext(ThemeContext);
+  const [search, setSearch] = useState('');
+
+  function handleBooks() {
+    dispatch(getBooksAction(search, 0));
+  }
 
   const handleViewProfile = useCallback(() => {
     navigation.navigate(HOME_SCREEN);
@@ -47,9 +51,11 @@ const Home: React.FC = () => {
           iconLeft="search"
           iconType="ionicons"
           placeholder="Digite o nomde de um livro"
-          // value={values.username}
-          // error={errors.username}
-          // onChangeText={handleChange('username')}
+          value={search}
+          onChangeText={value => {
+            setSearch(value);
+            handleBooks();
+          }}
           width={100}
         />
       </S.SearchConteiener>

@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 import { reactotron } from '~/config/ReactotronConfig';
 
 import reducers from './ducks';
-// import sagas from './sagas';
+import sagas from './sagas';
 
 export const persistConfig = {
   key: 'root',
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV !== 'production' || __DEV__) {
 }
 
 const store = createStore(persistedReducer, composed);
-// sagaMiddleware.run(sagas);
+sagaMiddleware.run(sagas);
 
 export const persistor = persistStore(store);
 
