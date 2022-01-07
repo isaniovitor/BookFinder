@@ -2,15 +2,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import styled from 'styled-components/native';
 
 import Icon from '~/components/Icon';
-
-// import Text from '~/components/Text';
+import Text from '~/components/Text';
 
 // Conteiner
-export const Container = styled(LinearGradient).attrs({
-  colors: ['#ff7b00', '#ffae00'],
+export const Container = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    theme.Colors.STRONG_ORANGE_BACKGROUND,
+    theme.Colors.WEAK_ORANGE_BACKGROUND,
+  ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-})`
+}))`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -18,7 +20,8 @@ export const Container = styled(LinearGradient).attrs({
 
 // Search section
 export const SearchConteiener = styled.View`
-  flex: 0.4;
+  /* flex: 0.4; */
+  flex: 1;
   justify-content: space-evenly;
   align-items: center;
   width: 90%;
@@ -49,17 +52,18 @@ export const TextConteiener = styled.View`
   width: 100%;
 `;
 
-export const WelcomeText = styled.Text`
+export const WelcomeText = styled(Text).attrs(({ theme }) => ({
+  fontSize: 30,
+}))`
   text-align: left;
   color: white;
   font-weight: bold;
-  font-size: 30px;
 `;
 
 export const BookIcon = styled(Icon).attrs(({ theme }) => ({
   type: 'ionicons',
   name: 'book',
-  color: theme.Colors.BACKGROUND_BUTTON_WHITE,
+  color: theme.Colors.WHITE,
   size: 100,
 }))`
   color: ${({ theme }) => theme.Colors.WHITE};
@@ -67,11 +71,11 @@ export const BookIcon = styled(Icon).attrs(({ theme }) => ({
 
 // Books section
 export const BooksConteiener = styled.View`
-  flex: 0.6;
-  justify-content: space-evenly;
+  flex: 1;
+  justify-content: center;
   align-items: center;
 
-  background: white;
+  background: ${({ theme }) => theme.Colors.BACKGROUND_GRAY};
   border-top-left-radius: 50px;
 
   /* background: yellow; */
@@ -80,6 +84,7 @@ export const BooksConteiener = styled.View`
 `;
 
 export const ImageContainer = styled.View`
+  /* flex: 1; */
   justify-content: center;
   align-items: center;
 
@@ -94,4 +99,10 @@ export const Image = styled.Image`
 
   width: 100px;
   height: 100px;
+`;
+
+export const OrengeText = styled(Text).attrs(({ theme }) => ({
+  fontSize: 16,
+}))`
+  color: #ff7b00;
 `;

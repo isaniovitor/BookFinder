@@ -11,14 +11,18 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  background: ${({ theme }) => theme.Colors.BACKGROUND_WHITE};
 `;
 
 // Image section
-export const ImageContainer = styled(LinearGradient).attrs({
-  colors: ['#ff7b00', '#ffae00'],
+export const ImageContainer = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    theme.Colors.STRONG_ORANGE_BACKGROUND,
+    theme.Colors.WEAK_ORANGE_BACKGROUND,
+  ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-})`
+}))`
   flex: 0.4;
   justify-content: center;
   align-items: center;
@@ -32,7 +36,7 @@ export const ImageContainer = styled(LinearGradient).attrs({
 export const BookIcon = styled(Icon).attrs(({ theme }) => ({
   type: 'ionicons',
   name: 'book',
-  color: theme.Colors.BACKGROUND_BUTTON_WHITE,
+  color: theme.Colors.WHITE,
   size: 150,
 }))`
   color: ${({ theme }) => theme.Colors.WHITE};
@@ -43,8 +47,6 @@ export const InputsContainer = styled.View`
   flex: 0.3;
   justify-content: space-evenly;
   align-items: center;
-
-  /* background: yellow; */
 
   width: 90%;
 `;
@@ -84,5 +86,5 @@ export const CreateAccount = styled(Text).attrs(({ theme }) => ({
 export const OrengeText = styled(Text).attrs(({ theme }) => ({
   fontSize: 16,
 }))`
-  color: #ff7b00;
+  color: ${({ theme }) => theme.Colors.ORANGE_TEXT};
 `;

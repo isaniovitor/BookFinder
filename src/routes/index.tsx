@@ -8,10 +8,16 @@ import { ThemeProvider } from 'styled-components/native';
 import { Header } from '~/components/Header';
 
 import type { AplicationState } from '~/@types/entities/AplicationState';
-import { HOME_SCREEN, LOGIN_SCREEN, PROFILE_SCREEN } from '~/constants/routes';
+import {
+  HOME_SCREEN,
+  LOGIN_SCREEN,
+  PROFILE_SCREEN,
+  WEB_SCREEN,
+} from '~/constants/routes';
 import Home from '~/screens/Home';
 import Login from '~/screens/Login';
-// import Profile from '~/screens/Profile';
+import Profile from '~/screens/Profile';
+import Web from '~/screens/Web';
 import { createTheme } from '~/utils/theme';
 
 const Stack = createNativeStackNavigator();
@@ -45,13 +51,21 @@ function RootStack() {
             }}
           />
 
-          {/* <Stack.Screen
+          <Stack.Screen
             name={PROFILE_SCREEN}
             component={Profile}
             options={{
               header: props => <Header {...props} headerMenu />,
             }}
-          /> */}
+          />
+
+          <Stack.Screen
+            name={WEB_SCREEN}
+            component={Web}
+            // options={{
+            //   header: props => <Header {...props} headerMenu />,
+            // }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

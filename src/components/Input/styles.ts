@@ -26,8 +26,15 @@ interface TextInputProps {
   iconRight?: string;
 }
 
+export const UpContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+`;
+
 export const styles = StyleSheet.create({
   UpContainer: {
+    paddingTop: 10,
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
@@ -50,7 +57,9 @@ export const ContainerInputIcon = styled.View`
   width: 100%;
   padding: 0 15px;
   border-radius: 50px;
-  background: white;
+  background: ${({ theme }) => theme.Colors.BACKGROUND_WHITE};
+  border-color: ${({ theme }) => theme.Colors.BORDER_INPUT};
+  border-bottom-width: 1px;
 `;
 
 export const Touchable = styled.TouchableOpacity``;
@@ -65,7 +74,9 @@ export const Title = styled(Text).attrs(({ theme }) => ({
   fontSize: 16,
 }))`
   padding-top: 10px;
-  color: ${({ theme }) => theme.Colors.SECONDARY_LIGHT_GRAY};
+  color: ${({ theme }) => theme.Colors.GRAY};
+
+  width: 100%;
 `;
 
 export const ContainerInput = styled.View<ContainerInputProps & ContainerProps>`
@@ -90,20 +101,22 @@ export const Container = styled.View<ContainerProps>`
 export const Input = styled.TextInput.attrs<TextInputProps>(
   ({ customFontSize, theme }) => ({
     fontSize: customFontSize,
-    placeholderTextColor: theme.Colors.GRAY,
+    placeholderTextColor: theme.Colors.TEXT_GRAY,
   }),
 )<TextInputProps>`
   width: ${({ iconRight }) => (iconRight ? 90 : 100)}%;
   /* font-size: 12px; */
-  color: ${({ theme }) => theme.Colors.SECONDARY_LIGHT_GRAY};
+  color: ${({ theme }) => theme.Colors.TEXT_GRAY};
   margin-bottom: ${vs(10)}px;
   margin-left: 10px;
 `;
 
 export const ErrorMessage = styled(Text)`
   color: ${({ theme }) => theme.Colors.ERROR};
-  /* text-align: start; */
-  /* margin-left: 30px; */
+
+  padding-left: 20px;
+  /* background: yellow; */
+  width: 100%;
 `;
 
 export const IconInput = styled(Icon).attrs<IconInputProps>(

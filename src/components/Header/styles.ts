@@ -22,7 +22,7 @@ export const Container = styled.View<Props>`
 
 // ??
 export const StatusBar = styled.StatusBar.attrs(({ theme }) => ({
-  backgroundColor: '#ff7b00',
+  backgroundColor: theme.Colors.STRONG_ORANGE_BACKGROUND,
 }))``;
 
 export const ButtonLeft = styled.TouchableOpacity`
@@ -43,15 +43,16 @@ export const IconColor = styled(Icon).attrs(({ theme }) => ({
 `;
 
 // up header
-export const AceContainer = styled(LinearGradient).attrs({
-  colors: ['#ff7b00', '#ffae00'],
+export const AceContainer = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    theme.Colors.STRONG_ORANGE_BACKGROUND,
+    theme.Colors.WEAK_ORANGE_BACKGROUND,
+  ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-})`
+}))`
   width: 100%;
   padding: 0 15px;
-
-  background-color: ${({ theme }) => theme.Colors.BACKGROUND};
 
   flex: 1;
   flex-direction: row;
@@ -93,11 +94,14 @@ export const SizeText = styled.Text`
 `;
 
 // down header
-export const HeaderContainer = styled(LinearGradient).attrs({
-  colors: ['#ff7b00', '#ffae00'],
+export const HeaderContainer = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    theme.Colors.STRONG_ORANGE_BACKGROUND,
+    theme.Colors.WEAK_ORANGE_BACKGROUND,
+  ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-})`
+}))`
   width: 100%;
 
   flex: 1;

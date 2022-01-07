@@ -25,20 +25,21 @@ function* getBooksSagas(action: GetBooksProps) {
     );
 
     if (response.status >= 200 && response.status < 300) {
+      // const books = response.data.items;
+      // console.tron.log('response', moreBooks);
+      let books = [];
       const { listBooks } = yield select(
         (state: AplicationState) => state.books,
       );
 
-      const moreBooks = response.data.items;
-      console.tron.log('response', moreBooks);
+      // ??
+      if (action.payload.index === 0) {
+        books = response.data.items;
+      } else {
+        books = [...listBooks, ...response.data.items];
+      }
 
-      // if (action.payload.index === 0) {
-      //   moreBooks = response.data.items;
-      // } else {
-      //   moreBooks = [...listBooks, ...response.data.items];
-      // }
-
-      yield put(getBooksSuccessAction(moreBooks));
+      yield put(getBooksSuccessAction(books));
     } else {
       yield put(getBooksErrorAction());
     }

@@ -35,17 +35,21 @@ const Input: React.FC<TextInputProps & InputProps> = ({
   const { delta } = useSelector((state: AplicationState) => state.font);
 
   return (
-    // <S.UpContainer width={width}>
-    <View style={S.styles.UpContainer}>
-      {/* <S.InputWrapper> */}
+    <S.UpContainer>
       {title && <S.Title>{title}</S.Title>}
+
+      {/* <S.InputWrapper> */}
+
       <S.ContainerInputIcon>
         {iconLeft && <S.IconInput iconType={iconType} name={iconLeft} />}
         <S.Container labelSameLine={labelSameLine}>
           {label && <S.Label>{label}</S.Label>}
           <S.ContainerInput error={error} labelSameLine={labelSameLine}>
             <S.Input
+              // inlineImageLeft='search_icon'
               {...rest}
+              // returnKeyLabel="search"
+              // returnKeyType="search"
               autoCapitalize="none"
               customFontSize={12 + delta}
               iconRight={iconRight}
@@ -59,9 +63,9 @@ const Input: React.FC<TextInputProps & InputProps> = ({
         </S.Container>
       </S.ContainerInputIcon>
       {/* </S.InputWrapper> */}
+
       {error && <S.ErrorMessage fontSize={12}>{error}</S.ErrorMessage>}
-    </View>
-    // </S.UpContainer>
+    </S.UpContainer>
   );
 };
 
