@@ -32,24 +32,6 @@ export const UpContainer = styled.View`
   align-items: flex-start;
 `;
 
-export const styles = StyleSheet.create({
-  UpContainer: {
-    paddingTop: 10,
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.35,
-    shadowRadius: 6.3,
-
-    elevation: 10,
-  },
-});
-
 export const ContainerInputIcon = styled.View`
   flex-direction: row;
   justify-content: center;

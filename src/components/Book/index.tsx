@@ -1,11 +1,9 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react';
-import { Image, Linking } from 'react-native';
-import { Checkbox } from 'react-native-paper';
+import { Linking } from 'react-native';
 
 import type { BookProps } from '~/@types/entities/book';
-import { test } from '~/assets/incorrect.png';
-import { HOME_SCREEN, WEB_SCREEN } from '~/constants/routes';
+import { BOOKDETAILS_SCREEN } from '~/constants/routes';
 
 import * as S from './styles';
 
@@ -17,16 +15,13 @@ const Book: React.FC<ButtonProps> = ({ item }) => {
   const navigation = useNavigation();
 
   function handleDetails() {
-    navigation.navigate(WEB_SCREEN, { book: item });
+    navigation.navigate(BOOKDETAILS_SCREEN, { book: item });
   }
 
+  // Linking.openURL(item.volumeInfo.infoLink);
   return (
     <S.ItemListConteiner>
-      <S.TouchableOpacity
-        onPress={() => {
-          Linking.openURL(item.volumeInfo.infoLink);
-        }}
-      >
+      <S.TouchableOpacity onPress={() => handleDetails()}>
         {item.volumeInfo.imageLinks.smallThumbnail !== undefined && (
           <S.ImageItem
             source={{ uri: item.volumeInfo.imageLinks.smallThumbnail }}

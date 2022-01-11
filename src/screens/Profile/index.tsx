@@ -2,22 +2,17 @@ import { useNavigation } from '@react-navigation/core';
 import * as ImagePicker from 'expo-image-picker';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '~/components/Button';
+import { Picker } from '~/components/DropDown';
 import { GlobalModal } from '~/components/GlobalModal';
 import Input from '~/components/Input';
 
 import type { AplicationState } from '~/@types/entities/AplicationState';
 import type { GenderProps } from '~/@types/entities/Gender';
+import { GENDERS } from '~/constants/gender';
 import { HOME_SCREEN, LOGIN_SCREEN } from '~/constants/routes';
 import { changeProfileAction } from '~/store/ducks/user/actions';
 
@@ -36,7 +31,6 @@ interface DataProps {
 
 const Profile: React.FC = () => {
   const dispatch = useDispatch();
-
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
   const { username, userimage, email, password, birthdate, gender } =
@@ -128,7 +122,6 @@ const Profile: React.FC = () => {
   }
 
   function logout() {
-    // dispatch(changeProfileAction(userName, userPassword, userImage, userEmail));
     navigation.navigate(LOGIN_SCREEN);
   }
 
@@ -194,22 +187,16 @@ const Profile: React.FC = () => {
               onChangeText={handleChange('birthdate')}
               width={100}
             />
-            <Input
-              title="Data Nascimento"
-              placeholder="Digite sua senha"
-              value={values.birthdate}
-              onChangeText={handleChange('birthdate')}
-              width={100}
+
+            <Picker
+              title="Gênero"
+              itemSelect={values.gender}
+              setItem={item => {
+                setFieldValue('gender', item);
+              }}
+              genders={GENDERS}
+              disabled={false}
             />
-            {/* <Picker
-            title="Gênero"
-            itemSelect={values.gender}
-            setItem={item => {
-              setFieldValue('gender', item);
-            }}
-            genders={GENDERS}
-            disabled={false}
-          /> */}
             <S.ButtonContainer>
               <Button label="Sair" actionBtn={() => logout()} />
             </S.ButtonContainer>

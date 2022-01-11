@@ -33,7 +33,9 @@ export const ResumeItemContainer = styled.View`
 
 export const NameItem = styled(Text).attrs(({ theme }) => ({
   fontSize: 16,
-}))``;
+}))`
+  color: ${({ theme }) => theme.Colors.BLACK}; ;
+`;
 
 export const PriceItem = styled(Text).attrs(({ theme }) => ({
   fontSize: 14,

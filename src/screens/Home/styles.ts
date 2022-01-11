@@ -1,4 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
+} from 'react-native-reanimated';
 import styled from 'styled-components/native';
 
 import Icon from '~/components/Icon';
@@ -30,7 +36,7 @@ export const SearchConteiener = styled.View`
 export const HeroConteiener = styled.View`
   justify-content: center;
   align-items: center;
-  flex: .6;
+  flex: 1;
 
   flex-direction: row
   width: 100%;

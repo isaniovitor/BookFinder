@@ -30,45 +30,24 @@ import * as S from './styles';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-
   const scrollY = useSharedValue(0);
-
   const navigation = useNavigation();
   const [search, setSearch] = useState('');
-
-  const Fullwidth = Dimensions.get('window').width; // full width
-
+  const Fullwidth = Dimensions.get('window').width;
   const { listBooks, loading } = useSelector(
     (state: AplicationState) => state.books,
   );
-
-  function scrollHandler(scroll: number) {
-    scrollY.value = scroll;
-  }
-
   const headerStyle = useAnimatedStyle(() => {
     return {
       flex: interpolate(scrollY.value, [0, 180], [0.4, 0.2], Extrapolate.CLAMP),
     };
   });
-
   const listStyle = useAnimatedStyle(() => {
     return {
       width: Fullwidth,
       flex: interpolate(scrollY.value, [0, 180], [0.6, 0.8], Extrapolate.CLAMP),
     };
   });
-
-  // const avatarStyle = useAnimatedStyle(() => {
-  //   return {
-  //     opacity: interpolate(
-  //       scrollY.value,
-  //       [100, 150],
-  //       [1, 0],
-  //       Extrapolate.CLAMP,
-  //     ),
-  //   };
-  // });
 
   const handleViewProfile = useCallback(() => {
     navigation.navigate(PROFILE_SCREEN);
@@ -80,6 +59,10 @@ const Home: React.FC = () => {
     } else {
       dispatch(getBooksAction(value, index));
     }
+  }
+
+  function scrollHandler(scroll: number) {
+    scrollY.value = scroll;
   }
 
   useEffect(() => {

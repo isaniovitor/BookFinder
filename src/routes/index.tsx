@@ -9,15 +9,15 @@ import { Header } from '~/components/Header';
 
 import type { AplicationState } from '~/@types/entities/AplicationState';
 import {
+  BOOKDETAILS_SCREEN,
   HOME_SCREEN,
   LOGIN_SCREEN,
   PROFILE_SCREEN,
-  WEB_SCREEN,
 } from '~/constants/routes';
+import BookDetails from '~/screens/BookDetails';
 import Home from '~/screens/Home';
 import Login from '~/screens/Login';
 import Profile from '~/screens/Profile';
-import Web from '~/screens/Web';
 import { createTheme } from '~/utils/theme';
 
 const Stack = createNativeStackNavigator();
@@ -32,7 +32,7 @@ function RootStack() {
     <ThemeProvider theme={createTheme(theme)}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={LOGIN_SCREEN}
+          initialRouteName={HOME_SCREEN}
           screenOptions={{ gestureEnabled: false, animation: 'fade' }}
         >
           <StackLogin.Screen
@@ -60,11 +60,11 @@ function RootStack() {
           />
 
           <Stack.Screen
-            name={WEB_SCREEN}
-            component={Web}
-            // options={{
-            //   header: props => <Header {...props} headerMenu />,
-            // }}
+            name={BOOKDETAILS_SCREEN}
+            component={BookDetails}
+            options={{
+              header: props => <Header {...props} headerMenu />,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

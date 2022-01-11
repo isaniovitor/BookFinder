@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import type { TextInputProps } from 'react-native';
-import { View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { ThemeContext } from 'styled-components';
 
 import type { AplicationState } from '~/@types/entities/AplicationState';
 
@@ -31,14 +29,11 @@ const Input: React.FC<TextInputProps & InputProps> = ({
   actionIcon,
   ...rest
 }) => {
-  // const { Colors } = useContext(ThemeContext);
   const { delta } = useSelector((state: AplicationState) => state.font);
 
   return (
     <S.UpContainer>
       {title && <S.Title>{title}</S.Title>}
-
-      {/* <S.InputWrapper> */}
 
       <S.ContainerInputIcon>
         {iconLeft && <S.IconInput iconType={iconType} name={iconLeft} />}
@@ -62,7 +57,6 @@ const Input: React.FC<TextInputProps & InputProps> = ({
           </S.ContainerInput>
         </S.Container>
       </S.ContainerInputIcon>
-      {/* </S.InputWrapper> */}
 
       {error && <S.ErrorMessage fontSize={12}>{error}</S.ErrorMessage>}
     </S.UpContainer>

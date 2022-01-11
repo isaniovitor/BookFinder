@@ -51,7 +51,6 @@ const Login: React.FC = () => {
         </S.ImageContainer>
         <S.InputsContainer>
           <Input
-            // title="oiolaaa"
             iconLeft="person"
             iconType="ionicons"
             placeholder="Digite seu nome"
@@ -82,7 +81,6 @@ const Login: React.FC = () => {
           <S.CreateAccountContainer>
             <S.CreateAccount>Don´t have an account?</S.CreateAccount>
             <S.OrengeText> Register</S.OrengeText>
-            {/* <Sty.CreateAccountButton>Create acoount</Sty.CreateAccountButton> */}
           </S.CreateAccountContainer>
         </S.LoginContainer>
       </S.Container>
